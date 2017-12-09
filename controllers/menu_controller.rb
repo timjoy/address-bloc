@@ -14,7 +14,8 @@ require_relative '../models/address_book'
      puts "2 - Create an entry"
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
-     puts "5 - Exit"
+     puts "5 - View Entry Number n"
+     puts "6 - Exit"
      print "Enter your selection: "
 
      selection = gets.to_i
@@ -37,6 +38,10 @@ require_relative '../models/address_book'
          read_csv
          main_menu
        when 5
+         system "clear"
+         view_entry_number
+         main_menu
+       when 6
          puts "Good-bye!"
          # #8
          exit(0)
@@ -71,9 +76,12 @@ require_relative '../models/address_book'
      phone = gets.chomp
      print "Email: "
      email = gets.chomp
+     entry_number = address_book.entries.index
+     puts "your entry number is #{entry_number}"
+
 
      # #13
-     address_book.add_entry(name, phone, email)
+     address_book.add_entry(name, phone, email, entry_number)
 
      system "clear"
      puts "New entry created"
@@ -84,6 +92,22 @@ require_relative '../models/address_book'
 
    def read_csv
    end
+
+   def view_entry_number
+     system "clear"
+     puts "Please enter the desired number."
+     print "Entry Number: "
+     entry_number = gets.chomp
+     # entry_number = address_book.entries.index += 1
+     # Entry = gets.chomp
+     # (entry_number - 1) = address_book.entries.index
+     if address_book.entries.index
+       puts (address_book.entries.index)  #+=1
+     elsif address_book.entries.index == nil
+       puts "Please enter a valid number."
+     end
+   end
+     # entry_number = gets.chomp
 
    def entry_submenu(entry)
      # #16
@@ -98,6 +122,7 @@ require_relative '../models/address_book'
      case selection
      # #18
        when "n"
+
      # #19
        when "d"
        when "e"
