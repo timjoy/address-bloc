@@ -76,12 +76,9 @@ require_relative '../models/address_book'
      phone = gets.chomp
      print "Email: "
      email = gets.chomp
-     entry_number = address_book.entries.index
-     puts "your entry number is #{entry_number}"
-
-
-     # #13
-     address_book.add_entry(name, phone, email, entry_number)
+     
+# #13
+     address_book.add_entry(name, phone, email)
 
      system "clear"
      puts "New entry created"
@@ -98,16 +95,18 @@ require_relative '../models/address_book'
      puts "Please enter the desired number."
      print "Entry Number: "
      entry_number = gets.chomp
-     # entry_number = address_book.entries.index += 1
-     # Entry = gets.chomp
-     # (entry_number - 1) = address_book.entries.index
-     if address_book.entries.index
-       puts (address_book.entries.index)  #+=1
-     elsif address_book.entries.index == nil
-       puts "Please enter a valid number."
+
+
+     # puts (address_book.entries.fetch(entry_number, "enter valid #"))  #+=1
+     if address_book.entries[entry_number.to_i]
+       puts address_book.entries[entry_number.to_i]
+     elsif address_book.entries[entry_number.to_i] == nil
+       puts "enter a valid entry number"
      end
+
+
    end
-     # entry_number = gets.chomp
+
 
    def entry_submenu(entry)
      # #16
