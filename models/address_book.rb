@@ -47,5 +47,39 @@ require "csv"
     end
   end
 
+  def binary_search(name)
+    lower = 0
+    upper = entries.length - 1
 
- end
+
+    while lower <= upper
+
+      mid = (lower + upper) / 2
+      mid_name = entries[mid].name
+
+
+      if name == mid_name
+        return entries[mid]
+      elsif name < mid_name
+        upper = mid - 1
+      elsif name > mid_name
+        lower = mid + 1
+      end
+    end
+    return nil
+  end
+
+  def iterative_search(name)
+    x = 0
+    while x < entries.length
+      if name == entries[x].name
+        return entries[x]
+      elsif name != entries[x]
+        x += 1
+      end
+    end
+
+    return nil
+  end
+
+end
