@@ -15,7 +15,9 @@ require_relative '../models/address_book'
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
      puts "5 - View Entry Number n"
-     puts "6 - Exit"
+     puts "6 - Delete all entries"
+     puts "7 - Exit"
+
      print "Enter your selection: "
 
      selection = gets.to_i
@@ -42,6 +44,9 @@ require_relative '../models/address_book'
          view_entry_number
          main_menu
        when 6
+         system "clear"
+         kerplosion
+       when 7
          puts "Good-bye!"
          # #8
          exit(0)
@@ -53,7 +58,18 @@ require_relative '../models/address_book'
      end
    end
 
-   # #10
+   def kerplosion
+     i=0
+     # puts address_book.entries[i]
+     # puts address_book.entries.length
+     while i < address_book.entries.length
+       address_book.entries.delete_at(i)
+       i += 1
+     end
+    
+     puts "All entries have been deleted"
+   end
+
    def view_all_entries
      address_book.entries.each do |entry|
        system "clear"
@@ -85,14 +101,13 @@ require_relative '../models/address_book'
    end
 
    def search_submenu(entry)
-     # #12
+
      puts "\nd - delete entry"
      puts "e - edit this entry"
      puts "m - return to main menu"
-     # #13
+
      selection = gets.chomp
 
-     # #14
      case selection
        when "d"
          system "clear"
@@ -112,7 +127,7 @@ require_relative '../models/address_book'
          search_submenu(entry)
      end
    end
-   
+
    def search_entries
      print "Search by name: "
      name = gets.chomp
