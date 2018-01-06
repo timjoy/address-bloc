@@ -59,16 +59,18 @@ require_relative '../models/address_book'
    end
 
    def kerplosion
-     i=0
-     puts address_book.entries[i]
-     # puts address_book.entries.length
+     # i=0
+     # puts address_book.entries[i]
+     # # puts address_book.entries.length
+     #
+     # while i < address_book.entries.length
+     #   address_book.entries.delete_at(i)
+     #   # i += 1
+     # end
 
-     while i < address_book.entries.length
-       address_book.entries.delete_at(i)
-       # i += 1
-     end
-
+     # @entries = []
      puts address_book.entries[0]
+     address_book.kerp
      puts "All entries have been deleted"
      puts address_book.entries[0]
    end

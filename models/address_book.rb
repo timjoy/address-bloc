@@ -82,4 +82,8 @@ require "csv"
     return nil
   end
 
+  def kerp
+    @entries = []
+  end
+
 end

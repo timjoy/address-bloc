@@ -250,15 +250,14 @@ RSpec.describe AddressBook do
      end
    end
 
-   describe "kerplosion" do
-     it "deletes all entries in a CSV file"
-      book.import_from_csv("entries.csv")
-      kerplosion
-      expect(entries).to be_nil
-    end
-   end 
+   describe "kerp" do
+     it "deletes all entries in a CSV file" do
+       book.import_from_csv("entries.csv")
 
-
+       book.kerp
+     #   # entries.csv.kerplosion
+     #   # expect(entries).to be_nil
+       expect(book.entries.size).to eq 0
+     end
    end
-
- end
+end
